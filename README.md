@@ -26,9 +26,9 @@ Sigue estos pasos para configurar el proyecto en tu sistema local:
 
 Navega al directorio del proyecto y ejecuta:
 
-     ```js
-     npm install
-     ```
+```js
+npm install
+ ```
 
 3. **Configuración de la API de Youtube:**
 
@@ -47,9 +47,9 @@ Navega al directorio del proyecto y ejecuta:
 
 Levanta el servidor de desarrollo con:
 
-     ```js
-     npm run dev
-     ```
+```js
+npm run dev
+```
 
 Esto iniciará el servidor de desarrollo y podrás acceder a la aplicación a través de `http://localhost:5173/` en tu navegador.
 
