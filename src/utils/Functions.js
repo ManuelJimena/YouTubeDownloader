@@ -36,7 +36,7 @@ const GetYoutubeID = (url) => {
 
 const VerifyYoutubeLink = (url) => {
   const youtubeExpression =
-    /^(https?:\/\/)?(www\.)?(youtu\.be\/|youtube\.com\/(shorts\/)?(embed\/|v\/|watch\?v=|watch\?.+&v=)?)([^#&?]{11})/;
+    /^(https?:\/\/)?(www\.|m\.)?(youtu\.be\/|youtube\.com\/(shorts\/)?(embed\/|v\/|watch\?v=|watch\?.+&v=)?)([^#&?]{11})/;
   return youtubeExpression.test(url);
 };
 
