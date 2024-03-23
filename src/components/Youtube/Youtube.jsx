@@ -1,34 +1,35 @@
 import { useEffect, useState } from "react";
-import PropTypes from 'prop-types'; // Importa PropTypes
-import { Youtube as YoutubeClass } from "../../services/youtube";
-import { CardYoutube } from "./CardYoutube";
+import PropTypes from 'prop-types';
+import { YoutubeVideo as YoutubeClass } from "../../services/video";
+import CardYoutube from "./CardYoutube";
 import "./Youtube.scss";
-import { Loader } from "../Loader/Loader";
-import { MapYoutube } from "../../utils/MapFetchs";
-import { GetYoutubeID, VerifyYoutubeLink } from "../../utils/Functions";
-import { Error } from "../Error/Error";
+import Spinner  from "../Spinner/Spinner";
+import MapYoutube from "../../utils/MapFetchs";
+import youtubeUtils from "../../utils/Functions";
+import Error from "../Error/Error";
 
-export const Youtube = (props) => {
+const Youtube = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const { link } = props;
   const [video, setVideo] = useState();
   const [error, setError] = useState("");
+
   useEffect(() => {
     (async () => {
       try {    
-        setError("")    
+        setError("");    
         setIsLoading(true);
-        const id = GetYoutubeID(link);
-        if (id && VerifyYoutubeLink(link))  {
+        const id = youtubeUtils.GetYoutubeID(link);
+        if (id && youtubeUtils.VerifyYoutubeLink(link)) {
           const YoutubeController = new YoutubeClass();
           const response = await YoutubeController.DownloadVideo(id); 
           if (response.status === "OK") {
             const result = MapYoutube(response);
             setVideo(result); 
-          }else{
-            setError("El video no se puede encontrar")
+          } else {
+            setError("No se ha encontrado el video");
           }
-        }else{
+        } else {
           setError("Enlace no válido");
         }
         setIsLoading(false);
@@ -37,11 +38,13 @@ export const Youtube = (props) => {
       }
     })();
   }, [link]);
+
   const closeError = () => {
     setError("");
   };
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <Spinner />;
+
   return (
     <>
       {error.length > 0 && <Error errortext={error} closeError={closeError} />}
@@ -50,7 +53,8 @@ export const Youtube = (props) => {
   );
 };
 
-// Añade las PropTypes al final
 Youtube.propTypes = {
   link: PropTypes.string.isRequired,
 };
+
+export default Youtube;

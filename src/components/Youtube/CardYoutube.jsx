@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'; // Importa PropTypes
+import PropTypes from 'prop-types';
 
-export const CardYouTube = (props) => {
+const CardYoutube = (props) => {
   const { video } = props;
   
   return (
@@ -13,7 +13,7 @@ export const CardYouTube = (props) => {
           <h3>{video.title}</h3>
           <div className="download_button">
             {video.video.map((v, index) => (
-              <p key={index}>{v.qualityLabel}.mp4 <a target="_blank" rel="noopener noreferrer" className="btn btn_blue" download="videoconvertido.mp4" href={`${v.url}&title=${video.title}`}>Descargar</a></p>
+              <p key={index}>{v.qualityLabel}.mp4 <a target="_blank" rel="noopener noreferrer" className="btn download_btn" download="videoconvertido.mp4" href={`${v.url}&title=${video.title}`}>Descargar</a></p>
             ))}
           </div>
           <p></p>
@@ -23,8 +23,7 @@ export const CardYouTube = (props) => {
   );
 };
 
-// Añade las PropTypes al final
-CardYouTube.propTypes = {
+CardYoutube.propTypes = {
   video: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -34,3 +33,5 @@ CardYouTube.propTypes = {
     })).isRequired,
   }).isRequired,
 };
+
+export default CardYoutube;

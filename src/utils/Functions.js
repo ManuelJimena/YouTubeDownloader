@@ -1,4 +1,4 @@
-export const downloadvideo = async (url, title) => {
+const downloadvideo = async (url, title) => {
   try {
     const response = await fetch(url);
     const blob = await response.blob();
@@ -14,7 +14,7 @@ export const downloadvideo = async (url, title) => {
   }
 };
 
-export const GetYoutubeID = (url) => {
+const GetYoutubeID = (url) => {
   const shortExpression = /youtu\.be\/(\w+)/;
   const longExpression = /youtube\.com\/.*[?&]v=([^#&?]+)/;
   const YshortExpression = /\/shorts\/([A-Za-z0-9_-]+)/;
@@ -34,8 +34,16 @@ export const GetYoutubeID = (url) => {
   }
 };
 
-export const VerifyYoutubeLink = (url) => {
+const VerifyYoutubeLink = (url) => {
   const youtubeExpression =
     /^(https?:\/\/)?(www\.)?(youtu\.be\/|youtube\.com\/(shorts\/)?(embed\/|v\/|watch\?v=|watch\?.+&v=)?)([^#&?]{11})/;
   return youtubeExpression.test(url);
 };
+
+const youtubeUtils = {
+  downloadvideo,
+  GetYoutubeID,
+  VerifyYoutubeLink,
+};
+
+export default youtubeUtils;

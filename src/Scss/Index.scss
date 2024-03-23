@@ -1,0 +1,25 @@
+@import "./Buttons.scss";
+@import "./Responsive.scss";
+@import "./Animation.scss";
+
+:root {
+  font-family: "Inter", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111111;
+  color: whitesmoke;
+  transition: all 0.5s ease-in-out;
+}
+
+@media (max-width: $responsive_media) {
+    .btn {
+        padding: 15px 25px;
+    }
+}

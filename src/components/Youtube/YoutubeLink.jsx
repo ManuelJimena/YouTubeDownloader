@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { YoutubeIcon } from "../../Icons/Icons";
 import Youtube from "./Youtube";
 
 const YoutubeLink = () => {
@@ -21,13 +20,17 @@ const YoutubeLink = () => {
       <form className="form_url">
         <input
           type="url"
-          placeholder="https://www.youtube.com/watch?v=Fn0jK0oZy80"
+          placeholder="https://www.youtube.com/watch?v=rSDoXnslLsg"
           className="input_url"
           onChange={handleChangeURL}
           value={link}
         />
-        <button className="btn btn_green" onClick={getID}>
-          <YoutubeIcon /> Descargar
+        <button className="btn search_btn" onClick={getID}>
+          <span></span>
+          <span></span>
+            Buscar
+          <span></span>
+          <span></span>
         </button>
       </form>
       {id.length > 0 && <Youtube link={id} />}

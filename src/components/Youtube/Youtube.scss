@@ -1,12 +1,12 @@
-@import "../../Sass/Index.scss";
+@import "../../Scss/Index.scss";
 .youtube_card {
   display: flex;
   max-width: 800px;
   justify-content: center;
   animation: animation-fade-up 0.5s;
   .content {
-    box-shadow: 0 0px 25px 8px #0000002e;
-    background-color: white;
+    box-shadow: 0 0px 8px 8px #9900ff2e;
+    background-color:transparent;
     border-radius: 5px;
     padding: 10px;
     box-sizing: border-box;
@@ -80,7 +80,6 @@
     margin-bottom: -20px;
     .content {
       flex-direction: column;
-      border-radius: 0;
       align-items: center;
       width: 100%;
       .img_figure {

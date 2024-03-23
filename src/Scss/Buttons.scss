@@ -1,0 +1,112 @@
+.btn{
+    padding: 8px 15px;
+    display: flex;
+    cursor: pointer;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.16);
+    font-size: 16px;
+    
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    &:focus-visible{
+        outline: none;
+    }
+    &:hover{
+        opacity: 0.8;
+    }
+}
+
+.search_btn {
+    background: none;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 9rem;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    border-radius: 0.3rem;
+    transition: all 0.5s ease-in-out;
+    background-color: #111111;
+    &:hover {
+        background-color: rgb(148, 0, 247);
+        color: white;
+    }
+} 
+
+.download_btn{
+    display: inline-block;
+    position: relative;
+    padding: 10px 25px;
+    background-color: rgb(148, 0, 247); 
+    color: white;
+    font-family: sans-serif;
+    text-decoration: none;
+    font-size: 0.9em;
+    text-align: center;
+    text-indent: 15px;
+    border: 2px solid transparent;
+    &:hover {
+        border: 2px solid white;
+    &:after {
+        animation-play-state: running;
+    }
+  }
+    &:before, &:after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 15px;
+        top: 52%;
+  }
+    &:before {
+        width: 10px;
+        height: 2px;
+        border-style: solid;
+        border-width: 0 2px 2px;
+  }
+    &:after {
+        width: 0;
+        height: 0;
+        margin-left: 3px;
+        margin-top: -7px;
+        border-style: solid;
+        border-width: 4px 4px 0 4px;
+        border-color: transparent;
+        border-top-color: white;
+        animation: downloadArrow 2s linear infinite;
+        animation-play-state: paused;
+  }
+}
+
+@keyframes downloadArrow {
+  0%, 0.001% {
+    margin-top: -7px;
+    opacity: 1;
+  }
+
+  0.001% {
+    margin-top: -15px;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    margin-top: 0;
+    opacity: 0;
+  }
+}
+
+.icon{
+    stroke: white;
+    margin-right: 5px;
+    width: 20px;
+    height: auto;
+}

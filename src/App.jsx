@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
 import Footer from "./components/Footer/Footer";
+import Menu from "./components/Menu/Menu";
+import Info from "./components/Info/Info";
 import Nav from "./components/Nav/Nav";
 
-const App = ({ children }) => {
+const App = () => {
   return (
     <div className="main">
       <header>
         <Nav />
       </header>
-      <div className="container">
-        {children}
-      </div>
+      <Menu />
+      <Info />
       <footer className="footer">
         <Footer />
       </footer>

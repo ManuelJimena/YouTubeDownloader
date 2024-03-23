@@ -1,23 +1,20 @@
 import youtube from "../../assets/youtube.webp";
 import "./Info.scss";
 
-export const Info = () => {
+const Info = () => {
   return (
     <div className="info_section">
-      <h2>Características de DescargaVideos</h2>
-      <p>Descarga videos de Youtube</p>
       <div className="info">
         <figure>
           <img src={youtube} alt="Descargar videos de Youtube gratis"/>
         </figure>
         <div className="text_info">
-          <h3>Descarga Videos de Youtube</h3>
-          <b>DescargaVideos</b> te ofrece una solución fácil y gratuita para
-          descargar videos de YouTube. Con una interfaz intuitiva y amigable,
-          podrás acceder a tus videos favoritos sin conexión en cuestión de
-          segundos.
+          <h3>Características de YouTubeDownloader</h3>
+          <b>YouTubeDownloader</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </div>
       </div>
     </div>
   );
 };
+
+export default Info;

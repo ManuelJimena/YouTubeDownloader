@@ -1,4 +1,4 @@
-export const MapYoutube = (video) => {
+const MapYoutube = (video) => {
   const youtubevideo = {
     id: video.id,
     thumb: video.thumbnail,
@@ -7,3 +7,5 @@ export const MapYoutube = (video) => {
   };
   return youtubevideo;
 };
+
+export default MapYoutube;
