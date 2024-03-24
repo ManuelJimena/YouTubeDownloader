@@ -42,7 +42,7 @@ const AudioDownloader = ({ videoId }) => {
             setError("No se pudo obtener el enlace de descarga del audio");
           }
         } else {
-          setError("No se ha encontrado el video.");
+          setError("No se ha encontrado el");
         }
       } catch (e) {
         console.error(e);
@@ -71,7 +71,8 @@ const AudioDownloader = ({ videoId }) => {
   return (
     videoDetails && (
       <div>
-        <CardVideo video={videoDetails} onDownload={handleDownloadAudio} />
+        <CardVideo video={videoDetails} />
+        <button onClick={handleDownloadAudio}>Descargar Audio</button>
       </div>
     )
   );

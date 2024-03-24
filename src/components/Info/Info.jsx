@@ -1,8 +1,11 @@
 import youtube from "../../assets/youtube.webp";
+import Briefing from "../Briefing/Briefing";
 import "./Info.scss";
 
 const Info = () => {
   return (
+    <>
+    <Briefing />
     <div className="info_section">
       <div className="info">
         <figure>
@@ -14,6 +17,7 @@ const Info = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
