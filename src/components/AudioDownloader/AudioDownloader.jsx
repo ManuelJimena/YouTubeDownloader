@@ -1,58 +1,77 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { YoutubeAudio } from "../../services/audio";
+import { YoutubeVideo } from "../../services/video";
 import youtubeUtils from "../../utils/Functions";
+import CardVideo from "../VideoDownloader/CardVideo";
+import Spinner from "../Spinner/Spinner";
+import Error from "../Error/Error";
 
 const AudioDownloader = ({ videoId }) => {
-  const [audioDetails, setAudioDetails] = useState(null);
+  const [videoDetails, setVideoDetails] = useState(null);
+  const [audioLink, setAudioLink] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchAudioDetails = async () => {
-      setLoading(true);
+    setLoading(true);
+    const fetchDetails = async () => {
       const id = youtubeUtils.GetYoutubeID(videoId);
       if (!id) {
-        setError("ID de vídeo no válido");
+        setError("Enlace no válido");
         setLoading(false);
         return;
       }
 
-      const audioService = new YoutubeAudio();
+      const videoService = new YoutubeVideo();
       try {
-        const data = await audioService.DownloadAudio(id);
-        if (data && data.link) {
-          setAudioDetails({ link: data.link, title: data.title });
+        const videoData = await videoService.DownloadVideo(id);
+        if (videoData && videoData.status === "OK") {
+          setVideoDetails({
+            id: id,
+            title: videoData.title,
+            thumbnail: videoData.thumbnail,
+            video: [],
+          });
+
+          const audioService = new YoutubeAudio();
+          const audioData = await audioService.DownloadAudio(id);
+          if (audioData && audioData.link) {
+            setAudioLink(audioData.link);
+          } else {
+            setError("No se pudo obtener el enlace de descarga del audio");
+          }
         } else {
-          throw new Error("No se pudo obtener la información del audio");
+          setError("No se ha encontrado el video.");
         }
-      } catch (error) {
-        console.error("Error al obtener la información del audio:", error);
-        setError("Error al obtener la información del audio");
+      } catch (e) {
+        console.error(e);
+        setError("Ocurrió un error inesperado al obtener los detalles del vídeo o del audio");
       } finally {
         setLoading(false);
       }
     };
 
-    if (videoId) {
-      fetchAudioDetails();
-    }
+    fetchDetails();
   }, [videoId]);
 
-  if (loading) return <p>Cargando...</p>;
-  if (error) return <p>Error: {error}</p>;
-
-  const handleDownload = () => {
-    if (audioDetails) {
-      youtubeUtils.downloadaudio(audioDetails.link, audioDetails.title);
+  const handleDownloadAudio = () => {
+    if (audioLink && videoDetails) {
+      youtubeUtils.downloadaudio(audioLink, videoDetails.title);
     }
   };
 
+  const closeError = () => {
+    setError("");
+  };
+
+  if (loading) return <Spinner />;
+  if (error) return <Error errortext={error} closeError={closeError} />;
+
   return (
-    audioDetails && (
+    videoDetails && (
       <div>
-        <h3>{audioDetails.title}</h3>
-        <button onClick={handleDownload}>Descargar Audio</button>
+        <CardVideo video={videoDetails} onDownload={handleDownloadAudio} />
       </div>
     )
   );
