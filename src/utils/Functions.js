@@ -34,7 +34,7 @@ const GetYoutubeID = (url) => {
   }
 };
 
-const VerifyYoutubeLink = (url) => {
+const VerifyVideoLink = (url) => {
   const youtubeExpression =
     /^(https?:\/\/)?(www\.|m\.)?(youtu\.be\/|youtube\.com\/(shorts\/)?(embed\/|v\/|watch\?v=|watch\?.+&v=)?)([^#&?]{11})/;
   return youtubeExpression.test(url);
@@ -43,7 +43,7 @@ const VerifyYoutubeLink = (url) => {
 const youtubeUtils = {
   downloadvideo,
   GetYoutubeID,
-  VerifyYoutubeLink,
+  VerifyVideoLink,
 };
 
 export default youtubeUtils;

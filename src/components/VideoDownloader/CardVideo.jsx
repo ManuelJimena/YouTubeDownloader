@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const CardYoutube = (props) => {
+const CardVideo = (props) => {
   const { video } = props;
   
   return (
@@ -23,7 +23,7 @@ const CardYoutube = (props) => {
   );
 };
 
-CardYoutube.propTypes = {
+CardVideo.propTypes = {
   video: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -34,4 +34,4 @@ CardYoutube.propTypes = {
   }).isRequired,
 };
 
-export default CardYoutube;
+export default CardVideo;

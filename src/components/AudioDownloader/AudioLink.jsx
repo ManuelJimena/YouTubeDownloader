@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Youtube from "./Youtube";
+import Youtube from "../VideoDownloader/Youtube";
 
-const YoutubeLink = () => {
+const YouTubeLink = () => {
   const [link, setLink] = useState("");
   const [id, setId] = useState("");
 
@@ -38,4 +38,4 @@ const YoutubeLink = () => {
   );
 };
 
-export default YoutubeLink;
+export default YouTubeLink;

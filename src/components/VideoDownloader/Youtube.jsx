@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { YoutubeVideo as YoutubeClass } from "../../services/video";
-import CardYoutube from "./CardYoutube";
+import CardVideo from "./CardVideo";
 import "./Youtube.scss";
 import Spinner  from "../Spinner/Spinner";
 import MapYoutube from "../../utils/MapFetchs";
@@ -20,7 +20,7 @@ const Youtube = (props) => {
         setError("");    
         setIsLoading(true);
         const id = youtubeUtils.GetYoutubeID(link);
-        if (id && youtubeUtils.VerifyYoutubeLink(link)) {
+        if (id && youtubeUtils.VerifyVideoLink(link)) {
           const YoutubeController = new YoutubeClass();
           const response = await YoutubeController.DownloadVideo(id); 
           if (response.status === "OK") {
@@ -48,7 +48,7 @@ const Youtube = (props) => {
   return (
     <>
       {error.length > 0 && <Error errortext={error} closeError={closeError} />}
-      {video ? <CardYoutube video={video} /> : ""}
+      {video ? <CardVideo video={video} /> : ""}
     </>
   );
 };
