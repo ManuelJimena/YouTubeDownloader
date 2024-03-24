@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import Footer from "./components/Footer/Footer";
 import Menu from "./components/Menu/Menu";
 import Info from "./components/Info/Info";
@@ -17,13 +16,6 @@ const App = () => {
       </footer>
     </div>
   );
-};
-
-App.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired
 };
 
 export default App;

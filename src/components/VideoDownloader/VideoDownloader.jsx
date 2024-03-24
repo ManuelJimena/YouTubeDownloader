@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { YoutubeVideo as YoutubeClass } from "../../services/video";
 import CardVideo from "./CardVideo";
-import "./Youtube.scss";
+import "./VideoDownloader.scss";
 import Spinner  from "../Spinner/Spinner";
 import MapYoutube from "../../utils/MapFetchs";
 import youtubeUtils from "../../utils/Functions";
 import Error from "../Error/Error";
 
-const Youtube = (props) => {
+const VideoDownloader = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const { link } = props;
   const [video, setVideo] = useState();
@@ -53,8 +53,8 @@ const Youtube = (props) => {
   );
 };
 
-Youtube.propTypes = {
+VideoDownloader.propTypes = {
   link: PropTypes.string.isRequired,
 };
 
-export default Youtube;
+export default VideoDownloader;

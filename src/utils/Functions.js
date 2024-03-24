@@ -14,6 +14,22 @@ const downloadvideo = async (url, title) => {
   }
 };
 
+const downloadaudio = async (url, title) => {
+  try {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = blobUrl;
+    link.download = `${title}.mp3`;
+    link.click();
+    URL.revokeObjectURL(blobUrl);
+    return true;
+  } catch (error) {
+    console.error("Error al descargar el audio:", error);
+  }
+};
+
 const GetYoutubeID = (url) => {
   const shortExpression = /youtu\.be\/(\w+)/;
   const longExpression = /youtube\.com\/.*[?&]v=([^#&?]+)/;
@@ -42,6 +58,7 @@ const VerifyVideoLink = (url) => {
 
 const youtubeUtils = {
   downloadvideo,
+  downloadaudio,
   GetYoutubeID,
   VerifyVideoLink,
 };

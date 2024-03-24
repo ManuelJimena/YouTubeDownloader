@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Youtube from "../VideoDownloader/Youtube";
+import AudioDownloader from "./AudioDownloader";
 
-const YouTubeLink = () => {
+const AudioLink = () => {
   const [link, setLink] = useState("");
   const [id, setId] = useState("");
 
@@ -17,7 +17,7 @@ const YouTubeLink = () => {
 
   return (
     <>
-      <form className="form_url">
+      <form className="form_url" onSubmit={getID}>
         <input
           type="url"
           placeholder="https://www.youtube.com/watch?v=rSDoXnslLsg"
@@ -25,17 +25,13 @@ const YouTubeLink = () => {
           onChange={handleChangeURL}
           value={link}
         />
-        <button className="btn search_btn" onClick={getID}>
-          <span></span>
-          <span></span>
-            Buscar
-          <span></span>
-          <span></span>
+        <button className="btn search_btn" type="submit">
+          Buscar
         </button>
       </form>
-      {id.length > 0 && <Youtube link={id} />}
+      {id && <AudioDownloader videoId={id} />}
     </>
   );
 };
 
-export default YouTubeLink;
+export default AudioLink;
