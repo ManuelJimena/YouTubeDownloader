@@ -17,18 +17,24 @@ const downloadvideo = async (url, title) => {
 const downloadaudio = async (url, title) => {
   try {
     const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Error al descargar el audio");
+    }
     const blob = await response.blob();
     const blobUrl = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = blobUrl;
     link.download = `${title}.mp3`;
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
     URL.revokeObjectURL(blobUrl);
-    return true;
   } catch (error) {
     console.error("Error al descargar el audio:", error);
+    throw error;
   }
 };
+
 
 const GetYoutubeID = (url) => {
   const shortExpression = /youtu\.be\/(\w+)/;
