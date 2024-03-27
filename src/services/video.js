@@ -1,25 +1,27 @@
 import ENV from "../utils/api";
 export class YoutubeVideo {
   async DownloadVideo(id) {
-    try {
-      const url = `${ENV.Video_url}?id=${id}`;
+    const url = `${ENV.Video_url}?id=${id}`;
+    const params = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": ENV.API_Key,
+        "X-RapidAPI-Host": ENV.Video_host,
+      },
+    };
 
-      const params = {
-        method: "GET",
-        headers: {
-          "X-RapidAPI-Key": ENV.API_Key,
-          "X-RapidAPI-Host": ENV.Video_host,
-        },
-      };
+    try {
       const response = await fetch(url, params);
-      if (response.status === 200) {
+      if (response.ok) {
         const result = await response.json();
         return result;
       } else {
-        throw response;
+        const error = await response.json();
+        throw new Error(error.message || "Error al obtener detalles del video.");
       }
     } catch (error) {
-      return error;
+      console.error("DownloadVideo error:", error);
+      throw new Error(error.message || "Error al conectar con el servicio de video.");
     }
   }
 }

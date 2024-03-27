@@ -12,10 +12,10 @@ const Briefing = () => {
           <div className="desc">
             <h5>
               <div className="why-title">
-                <span className="step-count">1</span>Seleccionar contenido
+                <span className="step-count">1</span>Elegir contenido
               </div>
             </h5>
-            <p>Seleccione que tipo de archivo quiere descargar: <b>Video</b> o <b>Audio</b>.</p>
+            <p>En la página de <b>YouTube</b> copia el enlace del <b>video</b> que quieres descargar.</p>
           </div>
         </li>
         <li>
@@ -42,7 +42,7 @@ const Briefing = () => {
                 <span className="step-count">3</span>Descargar archivo
               </div>
             </h5>
-            <p>Espere a que se complete la conversión y pulse en <b>Descargar</b> para descargar el archivo en su dispositivo.</p>
+            <p>Espera a que se muestren las opciones y pulsa <b>Descargar</b> en la que prefieras.</p>
           </div>
         </li>
       </ul>

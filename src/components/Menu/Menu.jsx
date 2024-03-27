@@ -1,49 +1,40 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Menu.scss';
 import VideoLink from '../VideoDownloader/VideoLink';
-import AudioLink from '../AudioDownloader/AudioLink';
-import Icons from '../../Icons/Icons';
 
-const MENU_TYPES = {
-  VIDEO: 'video',
-  AUDIO: 'audio',
-};
-
-const MenuButton = ({ type, isActive, changeMenu }) => (
+const MenuButton = ({ onClick }) => (
   <button
-    className={`select_btn ${isActive ? 'active' : ''}`}
-    onClick={() => changeMenu(type)}
-    aria-label={`Descargar ${type}`}
+    className={`select_btn`}
+    onClick={onClick}
+    aria-label={`Descargar`}
+    type="button"
   >
-    {type === MENU_TYPES.VIDEO ? <Icons.FilmIcon /> : <Icons.AudioIcon />} {type.charAt(0).toUpperCase() + type.slice(1)}
+    <i className="fab fa-youtube"></i> YouTube
   </button>
 );
 
-MenuButton.propTypes = {
-  type: PropTypes.string.isRequired,
-  isActive: PropTypes.bool.isRequired,
-  changeMenu: PropTypes.func.isRequired,
-};
-
 const Menu = () => {
-  const [menu, setMenu] = useState(MENU_TYPES.VIDEO);
+  const openYouTubePage = () => {
+    window.open('https://www.youtube.com', '_blank');
+  };
 
   return (
     <div className="content_data">
       <div className="block_info">
         <div className="menu">
-          <MenuButton type={MENU_TYPES.VIDEO} isActive={menu === MENU_TYPES.VIDEO} changeMenu={setMenu} />
-          <MenuButton type={MENU_TYPES.AUDIO} isActive={menu === MENU_TYPES.AUDIO} changeMenu={setMenu} />
+          <MenuButton onClick={openYouTubePage} />
         </div>
         <div className="title">
           <h1>Descarga Contenido de YouTube Gratis</h1>
         </div>
-        {menu === MENU_TYPES.VIDEO && <VideoLink />}
-        {menu === MENU_TYPES.AUDIO && <AudioLink />}
+        <VideoLink />
       </div>
     </div>
   );
+};
+
+MenuButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Menu;

@@ -21,7 +21,7 @@
         padding: 12px 15px;
         gap: 8px;
         border: 0;
-        background: #ffffff1a;
+        background: rgb(148, 0, 247);
         color: white;
         border-radius: 4px;
         cursor: pointer;
@@ -31,8 +31,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        &.active {
-          background-color: rgb(148, 0, 247);
+        i {
+          font-size: 22px;
         }
       }
     }

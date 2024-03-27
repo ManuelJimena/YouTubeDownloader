@@ -1,6 +1,20 @@
 import PropTypes from 'prop-types';
 
-const CardVideo = ({ video, onDownload }) => {
+const CardVideo = ({ video, audioLink }) => {
+  const downloadAudio = () => {
+    if (!audioLink) {
+      console.error("No hay enlace de descarga de audio disponible.");
+      return;
+    }
+
+    const link = document.createElement("a");
+    link.href = audioLink;
+    link.download = `${video.title}.mp3`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <article className="youtube_card">
       <div className="content">
@@ -10,15 +24,12 @@ const CardVideo = ({ video, onDownload }) => {
         <div className="content_info">
           <h3>{video.title}</h3>
           <div className="download_button">
-            {onDownload ? (
-              <button onClick={() => onDownload()} className="btn download_btn">Descargar Audio</button>
-            ) : (
-              video.video.map((v, index) => (
-                <p key={index}>
-                  {v.qualityLabel}.mp4 <a target="_blank" rel="noopener noreferrer" className="btn download_btn" download="videoconvertido.mp4" href={`${v.url}&title=${video.title}`}>Descargar</a>
-                </p>
-              ))
-            )}
+            {video.video && video.video.map((v, index) => (
+              <p key={index}>
+                {v.qualityLabel}.mp4 <a target="_blank" rel="noopener noreferrer" className="btn download_btn" download={`${video.title}.mp4`} href={`${v.url}&title=${video.title}`}>Descargar Video</a>
+              </p>
+            ))}
+            <button onClick={downloadAudio} className="btn download_btn">Descargar Audio</button>
           </div>
         </div>
       </div>
@@ -31,11 +42,11 @@ CardVideo.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     video: PropTypes.arrayOf(PropTypes.shape({
-      qualityLabel: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    })).isRequired,
+      qualityLabel: PropTypes.string,
+      url: PropTypes.string,
+    })),
   }).isRequired,
-  onDownload: PropTypes.func,
+  audioLink: PropTypes.string,
 };
 
 export default CardVideo;
