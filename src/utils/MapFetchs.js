@@ -1,5 +1,4 @@
 const MapYoutube = (video) => {
-  
   const youtubevideo = {
     id: video.id,
     thumb: video.thumbnail,

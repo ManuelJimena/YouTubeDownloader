@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import './Menu.scss';
-import VideoLink from '../VideoDownloader/VideoLink';
+import "./Menu.scss";
+import YoutubeLink from "../Youtube/YoutubeLink";
 
 const MenuButton = ({ onClick }) => (
   <button
@@ -27,7 +27,7 @@ const Menu = () => {
         <div className="title">
           <h1>Descarga Contenido de YouTube Gratis</h1>
         </div>
-        <VideoLink />
+        <YoutubeLink />
       </div>
     </div>
   );
