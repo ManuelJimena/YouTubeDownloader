@@ -11,6 +11,7 @@ export class YoutubeAudio {
           "X-RapidAPI-Host": ENV.Audio_host,
         },
       };
+
       const response = await fetch(url, params);
       if (response.status === 200) {
         const result = await response.json();
