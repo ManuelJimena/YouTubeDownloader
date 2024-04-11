@@ -6,7 +6,7 @@ const Briefing = () => {
       <ul className="listitem items-more">
         <li>
           <div className="icon-holder">
-              <i className="fa-solid fa-box-archive"></i>
+              <i className="fa-solid fa-film"></i>
             <div className="arrow-holder"></div>
           </div>
           <div className="desc">
