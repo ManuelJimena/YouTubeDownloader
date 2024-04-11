@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
+import Spinner from '../Spinner/Spinner';
 
-const CardYoutube = ({ video, audio }) => {
+const CardYoutube = ({ video, audio, isAudioLoading }) => {
   return (
     <article className="youtube_card">
       <div className="content">
@@ -11,14 +12,22 @@ const CardYoutube = ({ video, audio }) => {
           <h3>{video.title}</h3>
           <div className="download_button">
             {video.video.map((v, index) => (
-              <p key={index}>Video.mp4 <a target="_blank" rel="noopener noreferrer" className="btn download_btn" download="videoconvertido.mp4" href={`${v.url}&title=${video.title}`}>Descargar</a></p>
+              <p key={index}>
+                Video.mp4 <a target="_blank" rel="noopener noreferrer" className="btn download_btn" download="videoconvertido.mp4" href={`${v.url}&title=${video.title}`}>Descargar</a>
+              </p>
             ))}
           </div>
-          {audio && (
-            <div className="download_button">
-              <p>Audio.mp3 <a target="_blank" rel="noopener noreferrer" className="btn download_btn" download={`${audio.title}.mp3`} href={audio.link}>Descargar</a></p>
+          {isAudioLoading ? (
+            <div className="audio_loading">
+              <Spinner /> Procesando audio...
             </div>
-          )}
+          ) : audio ? (
+            <div className="download_button">
+              <p>
+                Audio.mp3 <a target="_blank" rel="noopener noreferrer" className="btn download_btn" download="audioconvertido.mp3" href={audio.link}>Descargar</a>
+              </p>
+            </div>
+          ) : null}
         </div>
       </div>
     </article>
@@ -37,7 +46,12 @@ CardYoutube.propTypes = {
   audio: PropTypes.shape({
     link: PropTypes.string,
     title: PropTypes.string,
+    filesize: PropTypes.number,
+    duration: PropTypes.number,
+    status: PropTypes.string,
+    msg: PropTypes.string,
   }),
+  isAudioLoading: PropTypes.bool.isRequired,
 };
 
 export default CardYoutube;
