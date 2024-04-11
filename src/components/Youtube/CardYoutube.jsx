@@ -13,7 +13,7 @@ const CardYoutube = ({ video, audio, isAudioLoading }) => {
           <div className="download_button">
             {video.video.map((v, index) => (
               <p key={index}>
-                Video.mp4 <a target="_blank" rel="noopener noreferrer" className="btn download_btn" download="videoconvertido.mp4" href={`${v.url}&title=${video.title}`}>Descargar</a>
+                {v.qualityLabel}.mp4 <a target="_blank" rel="noopener noreferrer" className="btn download_btn" download="videoconvertido.mp4" href={`${v.url}&title=${video.title}`}>Descargar</a>
               </p>
             ))}
           </div>
@@ -24,7 +24,7 @@ const CardYoutube = ({ video, audio, isAudioLoading }) => {
           ) : audio ? (
             <div className="download_button">
               <p>
-                Audio.mp3 <a target="_blank" rel="noopener noreferrer" className="btn download_btn" download="audioconvertido.mp3" href={audio.link}>Descargar</a>
+                Audio .mp3 <a target="_blank" rel="noopener noreferrer" className="btn download_btn" download="audioconvertido.mp3" href={audio.link}>Descargar</a>
               </p>
             </div>
           ) : null}
@@ -51,7 +51,7 @@ CardYoutube.propTypes = {
     status: PropTypes.string,
     msg: PropTypes.string,
   }),
-  isAudioLoading: PropTypes.bool.isRequired,
+  isAudioLoading: PropTypes.bool.isRequired, 
 };
 
 export default CardYoutube;
