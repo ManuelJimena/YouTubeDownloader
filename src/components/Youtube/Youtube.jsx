@@ -11,24 +11,27 @@ import Error from "../Error/Error";
 
 const Youtube = ({ link }) => {
   const [isVideoLoading, setIsVideoLoading] = useState(false);
-  const [isAudioLoading, setIsAudioLoading] = useState(false);
+  const [isAudioLoading, setIsAudioLoading] = useState(true);
   const [video, setVideo] = useState();
   const [audio, setAudio] = useState();
   const [error, setError] = useState("");
 
   useEffect(() => {
-    (async () => {
+    async function fetchData() {
+      setVideo(null);
+      setAudio(null);
       setError("");
+      setIsAudioLoading(true);
+
       const id = youtubeUtils.GetYoutubeID(link);
       if (!id || !youtubeUtils.VerifyYoutubeLink(link)) {
         setError("Enlace no válido");
+        setIsAudioLoading(false);
         return;
       }
 
       setIsVideoLoading(true);
-      setIsAudioLoading(true);
       const YoutubeController = new YoutubeClass();
-      const AudioController = new YoutubeAudio();
       try {
         const videoResponse = await YoutubeController.DownloadVideo(id);
         if (videoResponse.status === "OK") {
@@ -43,6 +46,7 @@ const Youtube = ({ link }) => {
         setIsVideoLoading(false);
       }
 
+      const AudioController = new YoutubeAudio();
       try {
         const audioResponse = await AudioController.DownloadAudio(id);
         if (audioResponse.status === "ok") {
@@ -55,7 +59,8 @@ const Youtube = ({ link }) => {
       } finally {
         setIsAudioLoading(false);
       }
-    })();
+    }
+    fetchData();
   }, [link]);
 
   const closeError = () => {
@@ -66,12 +71,12 @@ const Youtube = ({ link }) => {
 
   return (
     <>
-      {error && <Error errortext={error} closeError={closeError} />}
+      {error.length > 0 && <Error errortext={error} closeError={closeError} />}
       {video && (
         <CardYoutube
           video={video}
           audio={audio}
-          isAudioLoading={isAudioLoading} 
+          isAudioLoading={isAudioLoading}
         />
       )}
     </>

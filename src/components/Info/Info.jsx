@@ -13,7 +13,8 @@ const Info = () => {
         </figure>
         <div className="text_info">
           <h3>Características de YouTubeDownloader</h3>
-          <b>YouTubeDownloader</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <p><b>YouTubeDownloader</b> permite descargar <b>vídeos</b> en formato <b>.mp4</b> y extraer <b>audio</b> en formato <b>.mp3</b>. Las APIs que utiliza son gratuitas, por tanto la calidad de los vídeos descargados está limitada a un máximo de <b>720p</b> y tiene un <b>número limitado de descargas diarias</b>, que se restablecen automáticamente al día siguiente.</p>
+            <p>La conversión de vídeo a formato .mp3 puede requerir un tiempo considerable, especialmente cuando se trata de vídeos más largos. Esta espera se justifica por la transformación necesaria para extraer audio de calidad a partir del vídeo.</p>
         </div>
       </div>
     </div>

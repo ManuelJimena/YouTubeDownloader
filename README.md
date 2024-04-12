@@ -2,14 +2,15 @@
 
 ¡Descarga contenido de YouTube de manera fácil y rápida! YouTubeDownloader es una herramienta poderosa diseñada para ofrecerte la mejor experiencia al descargar tus videos y audios favoritos de YouTube sin complicaciones.
 
-[YouTubeDownloader Interface](path/to/screenshot.png) <!-- Reemplaza "path/to/screenshot.png" con la ruta real a tu captura de pantalla -->
+![YouTubeDownloader Interface](src/assets/mockuper.webp)
 
 ## 🌟 Características
 
 - **Interfaz sencilla y amigable**: Diseñada para todos los usuarios, desde principiantes hasta avanzados.
-- **Descargas Versátiles**: Soporta la descarga de videos en diversas calidades y archivos .MP3 para el audio.
+- **Descargas Versátiles**: Soporta la descarga de videos en .mp4 y archivos .mp3 para el audio.
 - **Tecnología Actual**: Desarrollado con React, Vite y Scss para un rendimiento óptimo y una experiencia de usuario fluida.
 - **Adaptable**: Funciona en todas las plataformas principales, incluidos desktop y dispositivos móviles.
+
 
 ## 📋 Requisitos Previos
 
@@ -60,7 +61,7 @@ Esto iniciará el servidor de desarrollo y podrás acceder a la aplicación a tr
 
 ## 📚 Uso
 
-Una vez que el servidor de desarrollo está en marcha, simplemente selecciona entre Video y Audio e introduce la URL del video de YouTube que deseas descargar. El sitio procesará tu solicitud y te proporcionará un enlace para descargar el archivo.
+Una vez que el servidor de desarrollo está en marcha, simplemente introduce la URL del video de YouTube que deseas descargar y presiona en "Buscar". El sitio procesará tu solicitud y te proporcionará los enlaces para descargar los archivos de audio y video.
 
 ## 🤝 Contribuir
 
